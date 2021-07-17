@@ -1,3 +1,9 @@
+input FileInfoInput {
+  name: String
+  alternativeText: String
+  caption: String
+}
+
 type UsersPermissionsMe {
   id: ID!
   username: String!
@@ -35,12 +41,6 @@ type UserPermissionsPasswordPayload {
   ok: Boolean!
 }
 
-input FileInfoInput {
-  name: String
-  alternativeText: String
-  caption: String
-}
-
 type Article {
   id: ID!
   created_at: DateTime!
@@ -52,6 +52,7 @@ type Article {
   category: Category
   image: UploadFile
   author: Writer
+  test: String
   published_at: DateTime
 }
 
@@ -77,6 +78,7 @@ type ArticleGroupBy {
   category: [ArticleConnectionCategory]
   image: [ArticleConnectionImage]
   author: [ArticleConnectionAuthor]
+  test: [ArticleConnectionTest]
   published_at: [ArticleConnectionPublished_at]
 }
 
@@ -130,6 +132,11 @@ type ArticleConnectionAuthor {
   connection: ArticleConnection
 }
 
+type ArticleConnectionTest {
+  key: String
+  connection: ArticleConnection
+}
+
 type ArticleConnectionPublished_at {
   key: DateTime
   connection: ArticleConnection
@@ -143,6 +150,7 @@ input ArticleInput {
   category: ID
   image: ID
   author: ID
+  test: String
   published_at: DateTime
   created_by: ID
   updated_by: ID
@@ -156,6 +164,7 @@ input editArticleInput {
   category: ID
   image: ID
   author: ID
+  test: String
   published_at: DateTime
   created_by: ID
   updated_by: ID
@@ -1189,6 +1198,241 @@ type deleteWriterPayload {
   writer: Writer
 }
 
+type I18NLocale {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String
+  code: String
+}
+
+input LocaleInput {
+  name: String
+  code: String
+  created_by: ID
+  updated_by: ID
+}
+
+input editLocaleInput {
+  name: String
+  code: String
+  created_by: ID
+  updated_by: ID
+}
+
+type UploadFile {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related(sort: String, limit: Int, start: Int, where: JSON): [Morph]
+}
+
+type UploadFileConnection {
+  values: [UploadFile]
+  groupBy: UploadFileGroupBy
+  aggregate: UploadFileAggregator
+}
+
+type UploadFileAggregator {
+  count: Int
+  totalCount: Int
+  sum: UploadFileAggregatorSum
+  avg: UploadFileAggregatorAvg
+  min: UploadFileAggregatorMin
+  max: UploadFileAggregatorMax
+}
+
+type UploadFileAggregatorSum {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorAvg {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMin {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMax {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileGroupBy {
+  id: [UploadFileConnectionId]
+  created_at: [UploadFileConnectionCreated_at]
+  updated_at: [UploadFileConnectionUpdated_at]
+  name: [UploadFileConnectionName]
+  alternativeText: [UploadFileConnectionAlternativeText]
+  caption: [UploadFileConnectionCaption]
+  width: [UploadFileConnectionWidth]
+  height: [UploadFileConnectionHeight]
+  formats: [UploadFileConnectionFormats]
+  hash: [UploadFileConnectionHash]
+  ext: [UploadFileConnectionExt]
+  mime: [UploadFileConnectionMime]
+  size: [UploadFileConnectionSize]
+  url: [UploadFileConnectionUrl]
+  previewUrl: [UploadFileConnectionPreviewUrl]
+  provider: [UploadFileConnectionProvider]
+  provider_metadata: [UploadFileConnectionProvider_metadata]
+}
+
+type UploadFileConnectionId {
+  key: ID
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCreated_at {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUpdated_at {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionName {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionAlternativeText {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCaption {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionWidth {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHeight {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionFormats {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHash {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionExt {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionMime {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionSize {
+  key: Float
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionPreviewUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider_metadata {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+input FileInput {
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editFileInput {
+  name: String
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  previewUrl: String
+  provider: String
+  provider_metadata: JSON
+  related: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input deleteFileInput {
+  where: InputID
+}
+
+type deleteFilePayload {
+  file: UploadFile
+}
+
 type UsersPermissionsPermission {
   id: ID!
   type: String!
@@ -1424,241 +1668,6 @@ type deleteUserPayload {
   user: UsersPermissionsUser
 }
 
-type UploadFile {
-  id: ID!
-  created_at: DateTime!
-  updated_at: DateTime!
-  name: String!
-  alternativeText: String
-  caption: String
-  width: Int
-  height: Int
-  formats: JSON
-  hash: String!
-  ext: String
-  mime: String!
-  size: Float!
-  url: String!
-  previewUrl: String
-  provider: String!
-  provider_metadata: JSON
-  related(sort: String, limit: Int, start: Int, where: JSON): [Morph]
-}
-
-type UploadFileConnection {
-  values: [UploadFile]
-  groupBy: UploadFileGroupBy
-  aggregate: UploadFileAggregator
-}
-
-type UploadFileAggregator {
-  count: Int
-  totalCount: Int
-  sum: UploadFileAggregatorSum
-  avg: UploadFileAggregatorAvg
-  min: UploadFileAggregatorMin
-  max: UploadFileAggregatorMax
-}
-
-type UploadFileAggregatorSum {
-  width: Float
-  height: Float
-  size: Float
-}
-
-type UploadFileAggregatorAvg {
-  width: Float
-  height: Float
-  size: Float
-}
-
-type UploadFileAggregatorMin {
-  width: Float
-  height: Float
-  size: Float
-}
-
-type UploadFileAggregatorMax {
-  width: Float
-  height: Float
-  size: Float
-}
-
-type UploadFileGroupBy {
-  id: [UploadFileConnectionId]
-  created_at: [UploadFileConnectionCreated_at]
-  updated_at: [UploadFileConnectionUpdated_at]
-  name: [UploadFileConnectionName]
-  alternativeText: [UploadFileConnectionAlternativeText]
-  caption: [UploadFileConnectionCaption]
-  width: [UploadFileConnectionWidth]
-  height: [UploadFileConnectionHeight]
-  formats: [UploadFileConnectionFormats]
-  hash: [UploadFileConnectionHash]
-  ext: [UploadFileConnectionExt]
-  mime: [UploadFileConnectionMime]
-  size: [UploadFileConnectionSize]
-  url: [UploadFileConnectionUrl]
-  previewUrl: [UploadFileConnectionPreviewUrl]
-  provider: [UploadFileConnectionProvider]
-  provider_metadata: [UploadFileConnectionProvider_metadata]
-}
-
-type UploadFileConnectionId {
-  key: ID
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionCreated_at {
-  key: DateTime
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionUpdated_at {
-  key: DateTime
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionName {
-  key: String
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionAlternativeText {
-  key: String
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionCaption {
-  key: String
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionWidth {
-  key: Int
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionHeight {
-  key: Int
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionFormats {
-  key: JSON
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionHash {
-  key: String
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionExt {
-  key: String
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionMime {
-  key: String
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionSize {
-  key: Float
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionUrl {
-  key: String
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionPreviewUrl {
-  key: String
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionProvider {
-  key: String
-  connection: UploadFileConnection
-}
-
-type UploadFileConnectionProvider_metadata {
-  key: JSON
-  connection: UploadFileConnection
-}
-
-input FileInput {
-  name: String!
-  alternativeText: String
-  caption: String
-  width: Int
-  height: Int
-  formats: JSON
-  hash: String!
-  ext: String
-  mime: String!
-  size: Float!
-  url: String!
-  previewUrl: String
-  provider: String!
-  provider_metadata: JSON
-  related: [ID]
-  created_by: ID
-  updated_by: ID
-}
-
-input editFileInput {
-  name: String
-  alternativeText: String
-  caption: String
-  width: Int
-  height: Int
-  formats: JSON
-  hash: String
-  ext: String
-  mime: String
-  size: Float
-  url: String
-  previewUrl: String
-  provider: String
-  provider_metadata: JSON
-  related: [ID]
-  created_by: ID
-  updated_by: ID
-}
-
-input deleteFileInput {
-  where: InputID
-}
-
-type deleteFilePayload {
-  file: UploadFile
-}
-
-type I18NLocale {
-  id: ID!
-  created_at: DateTime!
-  updated_at: DateTime!
-  name: String
-  code: String
-}
-
-input LocaleInput {
-  name: String
-  code: String
-  created_by: ID
-  updated_by: ID
-}
-
-input editLocaleInput {
-  name: String
-  code: String
-  created_by: ID
-  updated_by: ID
-}
-
 type ComponentSectionsHero {
   id: ID!
   title: String!
@@ -1762,7 +1771,7 @@ input editComponentSharedSeoInput {
   shareImage: ID
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Article | ArticleConnection | ArticleAggregator | ArticleGroupBy | ArticleConnectionId | ArticleConnectionCreated_at | ArticleConnectionUpdated_at | ArticleConnectionTitle | ArticleConnectionDescription | ArticleConnectionContent | ArticleConnectionSlug | ArticleConnectionCategory | ArticleConnectionImage | ArticleConnectionAuthor | ArticleConnectionPublished_at | createArticlePayload | updateArticlePayload | deleteArticlePayload | Category | CategoryConnection | CategoryAggregator | CategoryGroupBy | CategoryConnectionId | CategoryConnectionCreated_at | CategoryConnectionUpdated_at | CategoryConnectionName | CategoryConnectionSlug | createCategoryPayload | updateCategoryPayload | deleteCategoryPayload | Clients | ClientsConnection | ClientsAggregator | ClientsGroupBy | ClientsConnectionId | ClientsConnectionCreated_at | ClientsConnectionUpdated_at | ClientsConnectionImage | ClientsConnectionTitle | ClientsConnectionPublished_at | createClientPayload | updateClientPayload | deleteClientPayload | Features | FeaturesConnection | FeaturesAggregator | FeaturesGroupBy | FeaturesConnectionId | FeaturesConnectionCreated_at | FeaturesConnectionUpdated_at | FeaturesConnectionTitle | FeaturesConnectionDescription | FeaturesConnectionIcon | FeaturesConnectionUrl | FeaturesConnectionIcons | FeaturesConnectionPublished_at | createFeaturePayload | updateFeaturePayload | deleteFeaturePayload | Global | updateGlobalPayload | deleteGlobalPayload | Homepage | updateHomepagePayload | deleteHomepagePayload | Products | ProductsConnection | ProductsAggregator | ProductsGroupBy | ProductsConnectionId | ProductsConnectionCreated_at | ProductsConnectionUpdated_at | ProductsConnectionTitle | ProductsConnectionDescription | ProductsConnectionImage | ProductsConnectionUrl | ProductsConnectionIcons | ProductsConnectionPublished_at | createProductPayload | updateProductPayload | deleteProductPayload | Projects | ProjectsConnection | ProjectsAggregator | ProjectsGroupBy | ProjectsConnectionId | ProjectsConnectionCreated_at | ProjectsConnectionUpdated_at | ProjectsConnectionTitle | ProjectsConnectionDescription | ProjectsConnectionUrl | ProjectsConnectionImage | ProjectsConnectionPublished_at | createProjectPayload | updateProjectPayload | deleteProjectPayload | Slider | SliderConnection | SliderAggregator | SliderGroupBy | SliderConnectionId | SliderConnectionCreated_at | SliderConnectionUpdated_at | SliderConnectionTitle | SliderConnectionSubtitle | SliderConnectionDescription | SliderConnectionUrl | SliderConnectionBimage | SliderConnectionSimage | SliderConnectionPublished_at | createSliderPayload | updateSliderPayload | deleteSliderPayload | Testimonials | TestimonialsConnection | TestimonialsAggregator | TestimonialsGroupBy | TestimonialsConnectionId | TestimonialsConnectionCreated_at | TestimonialsConnectionUpdated_at | TestimonialsConnectionTitle | TestimonialsConnectionDescription | TestimonialsConnectionImage | TestimonialsConnectionDesignation | TestimonialsConnectionPublished_at | createTestimonialPayload | updateTestimonialPayload | deleteTestimonialPayload | Writer | WriterConnection | WriterAggregator | WriterGroupBy | WriterConnectionId | WriterConnectionCreated_at | WriterConnectionUpdated_at | WriterConnectionName | WriterConnectionPicture | WriterConnectionEmail | createWriterPayload | updateWriterPayload | deleteWriterPayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | I18NLocale | ComponentSectionsHero | ComponentSharedAboutUs | ComponentSharedFooter | ComponentSharedInfo | ComponentSharedSeo
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Article | ArticleConnection | ArticleAggregator | ArticleGroupBy | ArticleConnectionId | ArticleConnectionCreated_at | ArticleConnectionUpdated_at | ArticleConnectionTitle | ArticleConnectionDescription | ArticleConnectionContent | ArticleConnectionSlug | ArticleConnectionCategory | ArticleConnectionImage | ArticleConnectionAuthor | ArticleConnectionTest | ArticleConnectionPublished_at | createArticlePayload | updateArticlePayload | deleteArticlePayload | Category | CategoryConnection | CategoryAggregator | CategoryGroupBy | CategoryConnectionId | CategoryConnectionCreated_at | CategoryConnectionUpdated_at | CategoryConnectionName | CategoryConnectionSlug | createCategoryPayload | updateCategoryPayload | deleteCategoryPayload | Clients | ClientsConnection | ClientsAggregator | ClientsGroupBy | ClientsConnectionId | ClientsConnectionCreated_at | ClientsConnectionUpdated_at | ClientsConnectionImage | ClientsConnectionTitle | ClientsConnectionPublished_at | createClientPayload | updateClientPayload | deleteClientPayload | Features | FeaturesConnection | FeaturesAggregator | FeaturesGroupBy | FeaturesConnectionId | FeaturesConnectionCreated_at | FeaturesConnectionUpdated_at | FeaturesConnectionTitle | FeaturesConnectionDescription | FeaturesConnectionIcon | FeaturesConnectionUrl | FeaturesConnectionIcons | FeaturesConnectionPublished_at | createFeaturePayload | updateFeaturePayload | deleteFeaturePayload | Global | updateGlobalPayload | deleteGlobalPayload | Homepage | updateHomepagePayload | deleteHomepagePayload | Products | ProductsConnection | ProductsAggregator | ProductsGroupBy | ProductsConnectionId | ProductsConnectionCreated_at | ProductsConnectionUpdated_at | ProductsConnectionTitle | ProductsConnectionDescription | ProductsConnectionImage | ProductsConnectionUrl | ProductsConnectionIcons | ProductsConnectionPublished_at | createProductPayload | updateProductPayload | deleteProductPayload | Projects | ProjectsConnection | ProjectsAggregator | ProjectsGroupBy | ProjectsConnectionId | ProjectsConnectionCreated_at | ProjectsConnectionUpdated_at | ProjectsConnectionTitle | ProjectsConnectionDescription | ProjectsConnectionUrl | ProjectsConnectionImage | ProjectsConnectionPublished_at | createProjectPayload | updateProjectPayload | deleteProjectPayload | Slider | SliderConnection | SliderAggregator | SliderGroupBy | SliderConnectionId | SliderConnectionCreated_at | SliderConnectionUpdated_at | SliderConnectionTitle | SliderConnectionSubtitle | SliderConnectionDescription | SliderConnectionUrl | SliderConnectionBimage | SliderConnectionSimage | SliderConnectionPublished_at | createSliderPayload | updateSliderPayload | deleteSliderPayload | Testimonials | TestimonialsConnection | TestimonialsAggregator | TestimonialsGroupBy | TestimonialsConnectionId | TestimonialsConnectionCreated_at | TestimonialsConnectionUpdated_at | TestimonialsConnectionTitle | TestimonialsConnectionDescription | TestimonialsConnectionImage | TestimonialsConnectionDesignation | TestimonialsConnectionPublished_at | createTestimonialPayload | updateTestimonialPayload | deleteTestimonialPayload | Writer | WriterConnection | WriterAggregator | WriterGroupBy | WriterConnectionId | WriterConnectionCreated_at | WriterConnectionUpdated_at | WriterConnectionName | WriterConnectionPicture | WriterConnectionEmail | createWriterPayload | updateWriterPayload | deleteWriterPayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentSectionsHero | ComponentSharedAboutUs | ComponentSharedFooter | ComponentSharedInfo | ComponentSharedSeo
 
 input InputID {
   id: ID!
@@ -1810,6 +1819,8 @@ type Query {
   writer(id: ID!, publicationState: PublicationState): Writer
   writers(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Writer]
   writersConnection(sort: String, limit: Int, start: Int, where: JSON): WriterConnection
+  files(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UploadFile]
+  filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
   role(id: ID!, publicationState: PublicationState): UsersPermissionsRole
 
   """
@@ -1820,8 +1831,6 @@ type Query {
   user(id: ID!, publicationState: PublicationState): UsersPermissionsUser
   users(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UsersPermissionsUser]
   usersConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsUserConnection
-  files(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UploadFile]
-  filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
   me: UsersPermissionsMe
 }
 
@@ -1858,6 +1867,9 @@ type Mutation {
   updateWriter(input: updateWriterInput): updateWriterPayload
   deleteWriter(input: deleteWriterInput): deleteWriterPayload
 
+  """Delete one file"""
+  deleteFile(input: deleteFileInput): deleteFilePayload
+
   """Create a new role"""
   createRole(input: createRoleInput): createRolePayload
 
@@ -1875,17 +1887,14 @@ type Mutation {
 
   """Delete an existing user"""
   deleteUser(input: deleteUserInput): deleteUserPayload
-
-  """Delete one file"""
-  deleteFile(input: deleteFileInput): deleteFilePayload
+  upload(refId: ID, ref: String, field: String, source: String, info: FileInfoInput, file: Upload!): UploadFile!
+  multipleUpload(refId: ID, ref: String, field: String, source: String, files: [Upload]!): [UploadFile]!
+  updateFileInfo(id: ID!, info: FileInfoInput!): UploadFile!
   login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
   register(input: UsersPermissionsRegisterInput!): UsersPermissionsLoginPayload!
   forgotPassword(email: String!): UserPermissionsPasswordPayload
   resetPassword(password: String!, passwordConfirmation: String!, code: String!): UsersPermissionsLoginPayload
   emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
-  upload(refId: ID, ref: String, field: String, source: String, info: FileInfoInput, file: Upload!): UploadFile!
-  multipleUpload(refId: ID, ref: String, field: String, source: String, files: [Upload]!): [UploadFile]!
-  updateFileInfo(id: ID!, info: FileInfoInput!): UploadFile!
 }
 
 """
