@@ -31,6 +31,11 @@
       "type": "component",
       "repeatable": false,
       "component": "shared.info"
+    },
+    "banner1": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.banner1"
     }
   }
 }
