@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "jobs",
+  "info": {
+    "name": "jobs"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "jobReference": {
+      "type": "string"
+    },
+    "jobtype": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "experience": {
+      "type": "string"
+    },
+    "jobdescription": {
+      "type": "richtext"
+    },
+    "requiredskills": {
+      "type": "string"
+    },
+    "goodtohaveskills": {
+      "type": "string"
+    }
+  }
+}
