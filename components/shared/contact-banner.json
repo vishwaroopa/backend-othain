@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_shared_contact_banners",
+  "info": {
+    "name": "contact-banner",
+    "icon": "align-right"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "richtext"
+    }
+  }
+}

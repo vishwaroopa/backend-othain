@@ -36,6 +36,11 @@
       "type": "component",
       "repeatable": false,
       "component": "shared.banner1"
+    },
+    "contactbanner": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.contact-banner"
     }
   }
 }
