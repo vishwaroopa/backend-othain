@@ -1949,15 +1949,18 @@ input editComponentSharedBanner1Input {
 type ComponentSharedContactBanner {
   id: ID!
   text: String
+  image: UploadFile
 }
 
 input ComponentSharedContactBannerInput {
   text: String
+  image: ID
 }
 
 input editComponentSharedContactBannerInput {
   id: ID
   text: String
+  image: ID
 }
 
 type ComponentSharedFooter {
