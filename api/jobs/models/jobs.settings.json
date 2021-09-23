@@ -25,18 +25,33 @@
       "type": "string"
     },
     "experience": {
-      "type": "string"
+      "type": "text"
     },
     "jobdescription": {
       "type": "richtext"
     },
     "requiredskills": {
-      "type": "string"
+      "type": "text"
     },
     "goodtohaveskills": {
       "type": "string"
     },
     "slug": {
+      "type": "string"
+    },
+    "skillsRequired": {
+      "type": "richtext"
+    },
+    "Responsibilities": {
+      "type": "richtext"
+    },
+    "skillsDesired": {
+      "type": "richtext"
+    },
+    "primarySkillset": {
+      "type": "string"
+    },
+    "education": {
       "type": "string"
     }
   }

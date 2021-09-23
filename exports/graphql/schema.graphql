@@ -690,6 +690,11 @@ type Jobs {
   requiredskills: String
   goodtohaveskills: String
   slug: String
+  skillsRequired: String
+  Responsibilities: String
+  skillsDesired: String
+  primarySkillset: String
+  education: String
   published_at: DateTime
 }
 
@@ -717,6 +722,11 @@ type JobsGroupBy {
   requiredskills: [JobsConnectionRequiredskills]
   goodtohaveskills: [JobsConnectionGoodtohaveskills]
   slug: [JobsConnectionSlug]
+  skillsRequired: [JobsConnectionSkillsRequired]
+  Responsibilities: [JobsConnectionResponsibilities]
+  skillsDesired: [JobsConnectionSkillsDesired]
+  primarySkillset: [JobsConnectionPrimarySkillset]
+  education: [JobsConnectionEducation]
   published_at: [JobsConnectionPublished_at]
 }
 
@@ -780,6 +790,31 @@ type JobsConnectionSlug {
   connection: JobsConnection
 }
 
+type JobsConnectionSkillsRequired {
+  key: String
+  connection: JobsConnection
+}
+
+type JobsConnectionResponsibilities {
+  key: String
+  connection: JobsConnection
+}
+
+type JobsConnectionSkillsDesired {
+  key: String
+  connection: JobsConnection
+}
+
+type JobsConnectionPrimarySkillset {
+  key: String
+  connection: JobsConnection
+}
+
+type JobsConnectionEducation {
+  key: String
+  connection: JobsConnection
+}
+
 type JobsConnectionPublished_at {
   key: DateTime
   connection: JobsConnection
@@ -795,6 +830,11 @@ input JobInput {
   requiredskills: String
   goodtohaveskills: String
   slug: String
+  skillsRequired: String
+  Responsibilities: String
+  skillsDesired: String
+  primarySkillset: String
+  education: String
   published_at: DateTime
   created_by: ID
   updated_by: ID
@@ -810,6 +850,11 @@ input editJobInput {
   requiredskills: String
   goodtohaveskills: String
   slug: String
+  skillsRequired: String
+  Responsibilities: String
+  skillsDesired: String
+  primarySkillset: String
+  education: String
   published_at: DateTime
   created_by: ID
   updated_by: ID
@@ -2061,7 +2106,7 @@ input editComponentSharedSeoInput {
   shareImage: ID
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Article | ArticleConnection | ArticleAggregator | ArticleGroupBy | ArticleConnectionId | ArticleConnectionCreated_at | ArticleConnectionUpdated_at | ArticleConnectionTitle | ArticleConnectionDescription | ArticleConnectionContent | ArticleConnectionSlug | ArticleConnectionCategory | ArticleConnectionImage | ArticleConnectionAuthor | ArticleConnectionTest | ArticleConnectionPublished_at | createArticlePayload | updateArticlePayload | deleteArticlePayload | Banner | updateBannerPayload | deleteBannerPayload | Category | CategoryConnection | CategoryAggregator | CategoryAggregatorSum | CategoryAggregatorAvg | CategoryAggregatorMin | CategoryAggregatorMax | CategoryGroupBy | CategoryConnectionId | CategoryConnectionCreated_at | CategoryConnectionUpdated_at | CategoryConnectionName | CategoryConnectionSlug | CategoryConnectionUrl | CategoryConnectionSorting | createCategoryPayload | updateCategoryPayload | deleteCategoryPayload | Clients | ClientsConnection | ClientsAggregator | ClientsGroupBy | ClientsConnectionId | ClientsConnectionCreated_at | ClientsConnectionUpdated_at | ClientsConnectionImage | ClientsConnectionTitle | ClientsConnectionPublished_at | createClientPayload | updateClientPayload | deleteClientPayload | Features | FeaturesConnection | FeaturesAggregator | FeaturesGroupBy | FeaturesConnectionId | FeaturesConnectionCreated_at | FeaturesConnectionUpdated_at | FeaturesConnectionTitle | FeaturesConnectionDescription | FeaturesConnectionIcon | FeaturesConnectionUrl | FeaturesConnectionIcons | FeaturesConnectionPublished_at | createFeaturePayload | updateFeaturePayload | deleteFeaturePayload | Global | updateGlobalPayload | deleteGlobalPayload | Homepage | updateHomepagePayload | deleteHomepagePayload | Jobs | JobsConnection | JobsAggregator | JobsGroupBy | JobsConnectionId | JobsConnectionCreated_at | JobsConnectionUpdated_at | JobsConnectionJobReference | JobsConnectionJobtype | JobsConnectionTitle | JobsConnectionLocation | JobsConnectionExperience | JobsConnectionJobdescription | JobsConnectionRequiredskills | JobsConnectionGoodtohaveskills | JobsConnectionSlug | JobsConnectionPublished_at | createJobPayload | updateJobPayload | deleteJobPayload | Products | ProductsConnection | ProductsAggregator | ProductsGroupBy | ProductsConnectionId | ProductsConnectionCreated_at | ProductsConnectionUpdated_at | ProductsConnectionTitle | ProductsConnectionDescription | ProductsConnectionImage | ProductsConnectionUrl | ProductsConnectionIcons | ProductsConnectionPublished_at | createProductPayload | updateProductPayload | deleteProductPayload | Projects | ProjectsConnection | ProjectsAggregator | ProjectsGroupBy | ProjectsConnectionId | ProjectsConnectionCreated_at | ProjectsConnectionUpdated_at | ProjectsConnectionTitle | ProjectsConnectionDescription | ProjectsConnectionUrl | ProjectsConnectionImage | ProjectsConnectionPublished_at | createProjectPayload | updateProjectPayload | deleteProjectPayload | Slider | SliderConnection | SliderAggregator | SliderGroupBy | SliderConnectionId | SliderConnectionCreated_at | SliderConnectionUpdated_at | SliderConnectionTitle | SliderConnectionSubtitle | SliderConnectionDescription | SliderConnectionUrl | SliderConnectionBimage | SliderConnectionSimage | SliderConnectionPublished_at | createSliderPayload | updateSliderPayload | deleteSliderPayload | Testimonials | TestimonialsConnection | TestimonialsAggregator | TestimonialsGroupBy | TestimonialsConnectionId | TestimonialsConnectionCreated_at | TestimonialsConnectionUpdated_at | TestimonialsConnectionTitle | TestimonialsConnectionDescription | TestimonialsConnectionImage | TestimonialsConnectionDesignation | TestimonialsConnectionPublished_at | createTestimonialPayload | updateTestimonialPayload | deleteTestimonialPayload | Writer | WriterConnection | WriterAggregator | WriterGroupBy | WriterConnectionId | WriterConnectionCreated_at | WriterConnectionUpdated_at | WriterConnectionName | WriterConnectionPicture | WriterConnectionEmail | createWriterPayload | updateWriterPayload | deleteWriterPayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentSectionsHero | ComponentSharedAboutUs | ComponentSharedBanner | ComponentSharedBanner1 | ComponentSharedContactBanner | ComponentSharedFooter | ComponentSharedInfo | ComponentSharedSeo
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Article | ArticleConnection | ArticleAggregator | ArticleGroupBy | ArticleConnectionId | ArticleConnectionCreated_at | ArticleConnectionUpdated_at | ArticleConnectionTitle | ArticleConnectionDescription | ArticleConnectionContent | ArticleConnectionSlug | ArticleConnectionCategory | ArticleConnectionImage | ArticleConnectionAuthor | ArticleConnectionTest | ArticleConnectionPublished_at | createArticlePayload | updateArticlePayload | deleteArticlePayload | Banner | updateBannerPayload | deleteBannerPayload | Category | CategoryConnection | CategoryAggregator | CategoryAggregatorSum | CategoryAggregatorAvg | CategoryAggregatorMin | CategoryAggregatorMax | CategoryGroupBy | CategoryConnectionId | CategoryConnectionCreated_at | CategoryConnectionUpdated_at | CategoryConnectionName | CategoryConnectionSlug | CategoryConnectionUrl | CategoryConnectionSorting | createCategoryPayload | updateCategoryPayload | deleteCategoryPayload | Clients | ClientsConnection | ClientsAggregator | ClientsGroupBy | ClientsConnectionId | ClientsConnectionCreated_at | ClientsConnectionUpdated_at | ClientsConnectionImage | ClientsConnectionTitle | ClientsConnectionPublished_at | createClientPayload | updateClientPayload | deleteClientPayload | Features | FeaturesConnection | FeaturesAggregator | FeaturesGroupBy | FeaturesConnectionId | FeaturesConnectionCreated_at | FeaturesConnectionUpdated_at | FeaturesConnectionTitle | FeaturesConnectionDescription | FeaturesConnectionIcon | FeaturesConnectionUrl | FeaturesConnectionIcons | FeaturesConnectionPublished_at | createFeaturePayload | updateFeaturePayload | deleteFeaturePayload | Global | updateGlobalPayload | deleteGlobalPayload | Homepage | updateHomepagePayload | deleteHomepagePayload | Jobs | JobsConnection | JobsAggregator | JobsGroupBy | JobsConnectionId | JobsConnectionCreated_at | JobsConnectionUpdated_at | JobsConnectionJobReference | JobsConnectionJobtype | JobsConnectionTitle | JobsConnectionLocation | JobsConnectionExperience | JobsConnectionJobdescription | JobsConnectionRequiredskills | JobsConnectionGoodtohaveskills | JobsConnectionSlug | JobsConnectionSkillsRequired | JobsConnectionResponsibilities | JobsConnectionSkillsDesired | JobsConnectionPrimarySkillset | JobsConnectionEducation | JobsConnectionPublished_at | createJobPayload | updateJobPayload | deleteJobPayload | Products | ProductsConnection | ProductsAggregator | ProductsGroupBy | ProductsConnectionId | ProductsConnectionCreated_at | ProductsConnectionUpdated_at | ProductsConnectionTitle | ProductsConnectionDescription | ProductsConnectionImage | ProductsConnectionUrl | ProductsConnectionIcons | ProductsConnectionPublished_at | createProductPayload | updateProductPayload | deleteProductPayload | Projects | ProjectsConnection | ProjectsAggregator | ProjectsGroupBy | ProjectsConnectionId | ProjectsConnectionCreated_at | ProjectsConnectionUpdated_at | ProjectsConnectionTitle | ProjectsConnectionDescription | ProjectsConnectionUrl | ProjectsConnectionImage | ProjectsConnectionPublished_at | createProjectPayload | updateProjectPayload | deleteProjectPayload | Slider | SliderConnection | SliderAggregator | SliderGroupBy | SliderConnectionId | SliderConnectionCreated_at | SliderConnectionUpdated_at | SliderConnectionTitle | SliderConnectionSubtitle | SliderConnectionDescription | SliderConnectionUrl | SliderConnectionBimage | SliderConnectionSimage | SliderConnectionPublished_at | createSliderPayload | updateSliderPayload | deleteSliderPayload | Testimonials | TestimonialsConnection | TestimonialsAggregator | TestimonialsGroupBy | TestimonialsConnectionId | TestimonialsConnectionCreated_at | TestimonialsConnectionUpdated_at | TestimonialsConnectionTitle | TestimonialsConnectionDescription | TestimonialsConnectionImage | TestimonialsConnectionDesignation | TestimonialsConnectionPublished_at | createTestimonialPayload | updateTestimonialPayload | deleteTestimonialPayload | Writer | WriterConnection | WriterAggregator | WriterGroupBy | WriterConnectionId | WriterConnectionCreated_at | WriterConnectionUpdated_at | WriterConnectionName | WriterConnectionPicture | WriterConnectionEmail | createWriterPayload | updateWriterPayload | deleteWriterPayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentSectionsHero | ComponentSharedAboutUs | ComponentSharedBanner | ComponentSharedBanner1 | ComponentSharedContactBanner | ComponentSharedFooter | ComponentSharedInfo | ComponentSharedSeo
 
 input InputID {
   id: ID!
