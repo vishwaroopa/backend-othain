@@ -8,11 +8,11 @@ module.exports = ({ env }) => ({
       connector: 'bookshelf',
       settings: {
         client: 'postgres',
-        host: 'ec2-52-2-118-38.compute-1.amazonaws.com',
+        host: 'ec2-44-199-83-229.compute-1.amazonaws.com',
         port: '5432',
-        database: 'd8ne79odo9dlad',
-        username: 'ujaklzdvpmayto',
-        password: '1cdfd72cee19f1b5944368f6bd8de86f232b7952b4439daecc321f6ceba48ae8',
+        database: 'de5tpijhfrs2fc',
+        username: 'ylwrizgzuzcofh',
+        password: 'b2dc9bdf96a616a5e63004f22d5b61772fa2cfd74f958c1cdf7f573dbe454fa5',
         ssl: {
           rejectUnauthorized: false,
         },
