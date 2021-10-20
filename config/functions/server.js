@@ -1,3 +1,9 @@
 module.exports = ({ env }) => ({
-  url: env('MY_HEROKU_URL'),
+  host: env('HOST', '0.0.0.0'),
+  port: env.int('PORT', 1338),
+  admin: {
+    auth: {
+      secret: env('ADMIN_JWT_SECRET', '570e1cccf3882fc9eedfc8cd062d5151'),
+    },
+  },
 });
