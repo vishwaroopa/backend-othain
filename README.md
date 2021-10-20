@@ -1,3 +1,3 @@
 # Strapi application
 
-A quick description of your strapi applicationfffasa
+A quick description of your strapi applicationfff
