@@ -293,7 +293,7 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variables file
+# dotenv environment variables filehh
 #.env
 
 *.DS_Store
